@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <h1>Welcome to my resume!</h1>
-  </div>
-</template>
-
 <script setup lang="ts">
 useHead({
   title: ref("Rizki R. | Resume"),
@@ -15,3 +9,11 @@ useHead({
   ],
 });
 </script>
+
+<template>
+  <div
+    class="flex flex-col overflow-hidden lg:flex-row bg-[url(/images/left-bg.jpg)]"
+  >
+    <NuxtPage />
+  </div>
+</template>
