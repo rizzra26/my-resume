@@ -23,10 +23,8 @@
           </h4>
         </div>
         <p class="mt-2 text-sm font-normal font-inter text-slate-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          consectetur justo ut orci tristique faucibus et facilisis leo. Mauris
-          ante libero, commodo vel sem vitae, pellentesque maximus massa. In hac
-          habitasse platea dictumst.
+          Obtained a certificate in Full-Stack Mobile Developer (React Native)
+          after completing the coding bootcamp intensive at Fazztrack
         </p>
       </div>
       <div>
@@ -51,10 +49,9 @@
           </h4>
         </div>
         <p class="mt-2 text-sm font-normal font-inter text-slate-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          consectetur justo ut orci tristique faucibus et facilisis leo. Mauris
-          ante libero, commodo vel sem vitae, pellentesque maximus massa. In hac
-          habitasse platea dictumst.
+          Participated and passed the LSP (Indonesia Goverment Professional
+          Certification Institute) compentency test at KKNI Level II Software
+          Engineering Skills Competence
         </p>
       </div>
     </div>

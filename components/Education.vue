@@ -23,18 +23,53 @@
           </h4>
         </div>
         <p class="mt-2 text-sm font-normal font-inter text-slate-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          consectetur justo ut orci tristique faucibus et facilisis leo. Mauris
-          ante libero, commodo vel sem vitae, pellentesque maximus massa. In hac
-          habitasse platea dictumst.
+          After graduating from high school, I felt that I didn't have enough
+          programming skills to apply for a job, so I decided to join a coding
+          bootcamp for 3 months at Fazztrack.
         </p>
+        <ul class="text-sm font-normal text-white list-disc font-inter">
+          <li class="text-slate-700">
+            Learning web development using React JS and mobile development using
+            React Native
+          </li>
+          <li class="text-slate-700">
+            During my study at Fazztrack, I have learned JavaScript ES6,
+            Node.js, Express.js, API, React JS, React Native, Redux, MySQL,
+            Flowchart, ERD, Kanban (SCRUM), Version Control with Git, and
+            Deployment.
+          </li>
+          <li class="text-slate-700">
+            Build applications such as
+            <a
+              class="border-b border-dashed cursor-pointer border-slate-500/90"
+              target="_blank"
+              href="https://github.com/rizzra26/tickitz-mobile"
+            >
+              Tickitz </a
+            >,
+            <a
+              class="border-b border-dashed cursor-pointer border-slate-500/90"
+              target="_blank"
+              href="https://github.com/rizzra26/walletchip-mobile-official"
+            >
+              Walletchip </a
+            >,
+            <a
+              class="border-b border-dashed cursor-pointer border-slate-500/90"
+              target="_blank"
+              href="https://github.com/rizzra26/dynamessage-app"
+            >
+              Dynamessage
+            </a>
+          </li>
+        </ul>
       </div>
       <div>
         <div class="flex justify-between text-sm font-inter">
           <div class="flex flex-row items-baseline">
             <a
               class="font-medium border-b border-dashed cursor-pointer font-inter text-slate-800 border-slate-500/90"
-              href="https://www.fazztrack.com/"
+              href="https://smkn12jakarta.sch.id/"
               target="_blank"
             >
               SMK Negeri 12 Jakarta<span class="hidden sm:inline">,</span>
@@ -44,15 +79,35 @@
             </p>
           </div>
           <h4 class="text-xs font-medium font-inter text-slate-500/90">
-            2017 - 2020
+            Apr 2017 - May 2020
           </h4>
         </div>
         <p class="mt-2 text-sm font-normal font-inter text-slate-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          consectetur justo ut orci tristique faucibus et facilisis leo. Mauris
-          ante libero, commodo vel sem vitae, pellentesque maximus massa. In hac
-          habitasse platea dictumst.
+          It was at this time that I first learned programming, I'm learning
+          Software Development Methodology and the concept of Object-Oriented
+          Programming using Java Programming Language, also learned the basic of
+          Web Development like HTML, CSS JavaScript, PHP, MVC, MySQL.
         </p>
+        <ul class="text-sm font-normal text-white list-disc font-inter">
+          <li class="text-slate-700">
+            Internship as IT Support at
+            <a
+              class="border-b border-dashed cursor-pointer border-slate-500/90"
+              href="https://www.linkedin.com/company/daya-radar-utama-pt/"
+              target="_blank"
+              >PT Daya Radar Utama</a
+            >
+            for 3 months
+          </li>
+          <li class="text-slate-700">
+            Participated and achieve 2nd place in Lomba Keterampilan Siswa (LKS)
+            Web Technology.
+          </li>
+          <li class="text-slate-700">
+            Joined an extracurricular club called the IT Club and served as head
+            of the Software Development division.
+          </li>
+        </ul>
       </div>
     </div>
   </div>

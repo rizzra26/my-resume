@@ -4,7 +4,7 @@
       Projects
     </div>
     <div class="grid grid-cols-1 gap-4">
-      <div>
+      <div class="flex flex-col">
         <div class="flex justify-between text-sm font-inter">
           <div class="flex flex-row items-baseline">
             <a
@@ -25,25 +25,11 @@
           </h4>
         </div>
         <p class="mt-2 text-sm font-normal font-inter text-slate-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          consectetur justo ut orci tristique faucibus et facilisis leo. Mauris
-          ante libero, commodo vel sem vitae, pellentesque maximus massa. In hac
-          habitasse platea dictumst.
+          A Discord Clone Application built with Next to learning how to create
+          an end-to-end fullstack and real-time, all with servers, channels,
+          video calls, audio calls, editing and deleting messages as well as
+          member roles.
         </p>
-        <ul class="text-sm font-normal text-white list-disc font-inter">
-          <li class="text-slate-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            consectetur justo ut orci tristique faucibus et facilisis leo.
-            Mauris ante libero, commodo vel sem vitae, pellentesque maximus
-            massa. In hac habitasse platea dictumst.
-          </li>
-          <li class="text-slate-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            consectetur justo ut orci tristique faucibus et facilisis leo.
-            Mauris ante libero, commodo vel sem vitae, pellentesque maximus
-            massa. In hac habitasse platea dictumst.
-          </li>
-        </ul>
         <p
           class="inline-block mt-2 text-sm font-medium font-inter text-slate-700"
         >
@@ -61,7 +47,7 @@
           </span>
         </p>
       </div>
-      <div>
+      <div class="flex flex-col">
         <div class="flex justify-between text-sm font-inter">
           <div class="flex flex-row items-baseline">
             <a
@@ -80,25 +66,9 @@
           </h4>
         </div>
         <p class="mt-2 text-sm font-normal font-inter text-slate-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          consectetur justo ut orci tristique faucibus et facilisis leo. Mauris
-          ante libero, commodo vel sem vitae, pellentesque maximus massa. In hac
-          habitasse platea dictumst.
+          Games Topup Store Website built using MERN Stack by implementing
+          Atomic Design with Story Book
         </p>
-        <ul class="text-sm font-normal text-white list-disc font-inter">
-          <li class="text-slate-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            consectetur justo ut orci tristique faucibus et facilisis leo.
-            Mauris ante libero, commodo vel sem vitae, pellentesque maximus
-            massa. In hac habitasse platea dictumst.
-          </li>
-          <li class="text-slate-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            consectetur justo ut orci tristique faucibus et facilisis leo.
-            Mauris ante libero, commodo vel sem vitae, pellentesque maximus
-            massa. In hac habitasse platea dictumst.
-          </li>
-        </ul>
         <p
           class="inline-block mt-2 text-sm font-medium font-inter text-slate-700"
         >
@@ -106,7 +76,7 @@
           <span class="inline-block font-normal text-slate-700">
             TypeScript
             <img src="~/assets/icons/dot.svg" class="inline w-5" />
-            Storybook
+            StoryBook
             <img src="~/assets/icons/dot.svg" class="inline w-5" />
             Next
             <img src="~/assets/icons/dot.svg" class="inline w-5" />

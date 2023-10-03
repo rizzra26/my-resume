@@ -21,23 +21,31 @@
           </h4>
         </div>
         <p class="mt-2 text-sm font-normal font-inter text-slate-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          consectetur justo ut orci tristique faucibus et facilisis leo. Mauris
-          ante libero, commodo vel sem vitae, pellentesque maximus massa. In hac
-          habitasse platea dictumst.
+          A company that specializes in the Software Development, Education, and
+          UI/UX Designer
         </p>
         <ul class="text-sm font-normal text-white list-disc font-inter">
           <li class="text-slate-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            consectetur justo ut orci tristique faucibus et facilisis leo.
-            Mauris ante libero, commodo vel sem vitae, pellentesque maximus
-            massa. In hac habitasse platea dictumst.
+            Building an application called
+            <a
+              class="border-b border-dashed cursor-pointer border-slate-500/90"
+              href="https://rph.oqurydev.my.id/"
+              target="_blank"
+              >RPHClick</a
+            >. Application to create schedules for teachers, during the teaching
+            and learning process in Malaysia.
           </li>
           <li class="text-slate-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            consectetur justo ut orci tristique faucibus et facilisis leo.
-            Mauris ante libero, commodo vel sem vitae, pellentesque maximus
-            massa. In hac habitasse platea dictumst.
+            Slicing Figma Design to React Native code, and implemented google
+            oauth and facebook for authentication on mobile application.
+          </li>
+          <li class="text-slate-700">
+            Build Back Office Website with Vite for efficiency and effectiveness
+            of the development process.
+          </li>
+          <li class="text-slate-700">
+            Create Full REST API Service using Nest and payment gateway with
+            Malaysian payment platform toyyibPay
           </li>
         </ul>
         <p
@@ -76,23 +84,24 @@
           </h4>
         </div>
         <p class="mt-2 text-sm font-normal font-inter text-slate-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-          consectetur justo ut orci tristique faucibus et facilisis leo. Mauris
-          ante libero, commodo vel sem vitae, pellentesque maximus massa. In hac
-          habitasse platea dictumst.
+          An IT company that has collaborated with many clients for various
+          needs such as Company Profile, E-Commerce, E-Auction, E-Recruitment,
+          Warehouse Applications, CRM, CMS, Marketplace and internal company
+          needs.
         </p>
         <ul class="text-sm font-normal text-white list-disc font-inter">
           <li class="text-slate-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            consectetur justo ut orci tristique faucibus et facilisis leo.
-            Mauris ante libero, commodo vel sem vitae, pellentesque maximus
-            massa. In hac habitasse platea dictumst.
+            Worked with a team in Indonesian Ministry of Investment Projects
+            called Online Single Submission (OSS).
           </li>
           <li class="text-slate-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            consectetur justo ut orci tristique faucibus et facilisis leo.
-            Mauris ante libero, commodo vel sem vitae, pellentesque maximus
-            massa. In hac habitasse platea dictumst.
+            Contributed and Improved to several services such as Revocation,
+            Reporting, Scheduling, and LKPM (Investment Activity Report).
+          </li>
+          <li class="text-slate-700">
+            Participated in agile development processes, including daily
+            stand-ups, sprint planning, and retrospectives, to ensure that the
+            team was meeting project goals and deadlines.
           </li>
         </ul>
         <p
