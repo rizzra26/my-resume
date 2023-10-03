@@ -15,6 +15,7 @@
       <AboutMe />
       <Skills />
       <Languages />
+      <MadeWithTailwind />
     </div>
   </div>
 </template>
