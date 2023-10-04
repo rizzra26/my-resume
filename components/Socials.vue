@@ -17,28 +17,28 @@ export default {
       target="_blank"
       class="no-print transition-all duration-200 hover:text-slate-700 text-2xl"
     >
-      <UIcon name="i-mdi-printer-outline" />
+      <nuxt-icon name="printer" />
     </button>
     <a
       href="https://github.com/rizzra26"
       target="_blank"
       class="transition-all duration-200 hover:text-slate-700 text-2xl"
     >
-      <UIcon name="i-mdi-github" />
+      <nuxt-icon name="github" />
     </a>
     <a
       href="https://www.linkedin.com/in/rizkira/"
       target="_blank"
       class="transition-all duration-200 hover:text-slate-700 text-2xl"
     >
-      <UIcon name="i-mdi-linkedin" />
+      <nuxt-icon name="linkedin" />
     </a>
     <a
       href="mailto:rizzra26@gmail.com"
       target="_blank"
       class="transition-all duration-200 hover:text-slate-700 text-2xl"
     >
-      <UIcon name="i-mdi-at" />
+      <nuxt-icon name="at" />
     </a>
   </div>
 </template>

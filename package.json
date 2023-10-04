@@ -18,6 +18,7 @@
     "sass": "^1.68.0"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.8.1"
+    "@nuxt/ui": "^2.8.1",
+    "nuxt-icons": "^3.2.1"
   }
 }

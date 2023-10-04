@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     shim: false,
     typeCheck: false,
   },
-  modules: ["@nuxt/ui"],
+  modules: ["@nuxt/ui", "nuxt-icons"],
   ui: {
     global: true,
     icons: ["mdi", "simple-icons"],
