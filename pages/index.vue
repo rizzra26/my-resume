@@ -16,6 +16,8 @@
       <Skills />
       <Languages />
       <MadeWithTailwind />
+      <br />
+      <br />
     </div>
   </div>
 </template>
