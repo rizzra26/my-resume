@@ -9,7 +9,7 @@
           <div class="flex flex-row items-baseline">
             <a
               class="font-medium border-b border-dashed cursor-pointer font-inter text-slate-800 border-slate-500/90"
-              href="https://ngandikan-discord-clone-production.up.railway.app/"
+              href="https://github.com/rizzra26/discord-clone"
               target="_blank"
             >
               Ngandikan - Team Chat Application<span class="hidden sm:inline"
@@ -52,7 +52,7 @@
           <div class="flex flex-row items-baseline">
             <a
               class="font-medium border-b border-dashed cursor-pointer font-inter text-slate-800 border-slate-500/90"
-              href="https://topupstore.rizzra.me/"
+              href="https://github.com/rizzra26/topup-store"
               target="_blank"
             >
               Topup Store<span class="hidden sm:inline">,</span>
