@@ -4,13 +4,18 @@
       class="lg:w-[65%] w-full bg-cover bg-effect text-slate-950 px-8 sm:px-16"
     >
       <Me />
+      <div class="hidden print:inline">
+        <AboutMe />
+        <Skills />
+        <Languages />
+      </div>
       <Work />
       <Projects />
       <Certificates />
       <Education />
     </div>
     <div
-      class="lg:w-[45%] w-full bg-cover bg-[url(/images/right-bg.jpg)] min-h-full h-full text-white px-8"
+      class="lg:w-[45%] no-print w-full bg-cover bg-[url(/images/right-bg.jpg)] min-h-full h-full text-white px-8"
     >
       <AboutMe />
       <Skills />

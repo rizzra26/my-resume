@@ -9,6 +9,9 @@ export default <Partial<Config>>{
       fontFamily: {
         inter: ["Inter", ...defaultTheme.fontFamily.sans],
       },
+      screens: {
+        print: { raw: "print" },
+      },
     },
   },
 };
