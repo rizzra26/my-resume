@@ -4,7 +4,7 @@ executors:
   docker-executor:
     docker:
       - image: cimg/base:current  # Ganti dengan image yang sesuai, misalnya image Node.js
-    resource_class: rizzra26/vpsku
+    resource_class: rizzra26/my-resume
 
 jobs:
   build:
