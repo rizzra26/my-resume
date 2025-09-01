@@ -3,16 +3,14 @@ version: 2.1
 executors:
   docker-executor:
     docker:
-      - image: circleci/node:16  # Ganti dengan image yang sesuai, misalnya image Node.js
-    working_directory: ~/repo
+      - image: cimg/base:current  # Ganti dengan image yang sesuai, misalnya image Node.js
+    resource_class: rizzra26/vpsku
 
 jobs:
   build:
     executor: docker-executor
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run:
           name: Install Dependencies
           command: |
@@ -32,14 +30,12 @@ jobs:
             docker push rizzra/my-resume
 
   deploy:
-    docker:
-      - image: circleci/node:16  # Ganti dengan image yang sesuai
+    executor: docker-executor
     steps:
       - checkout
       - run:
           name: Deploy to VPS using Portainer
           command: |
-            curl -fsSL https://raw.githubusercontent.com/portainer/portainer-ce/master/scripts/portainer.sh | sh  # Install Portainer di VPS jika belum ada
             docker pull rizzra/my-resume  # Tarik Docker image yang telah dipush ke Docker Hub
             docker stop my-resume || true  # Stop container sebelumnya
             docker rm my-resume || true    # Hapus container sebelumnya
