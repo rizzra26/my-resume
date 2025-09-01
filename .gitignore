@@ -23,7 +23,7 @@ logs
 .env.*
 !.env.example
 
-Dockerfile
-Dockerfile.dev
-docker-compose.yml
-docker-compose.dev.yml
+# Dockerfile
+# Dockerfile.dev
+# docker-compose.yml
+# docker-compose.dev.yml
