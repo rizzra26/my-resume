@@ -16,6 +16,10 @@ jobs:
           command: |
             npm install
       - run:
+          name: Check Docker Daemon
+          command: |
+            ls -l /var/run/docker.sock
+      - run:
           name: Build Nuxt.js
           command: |
             npm run build
