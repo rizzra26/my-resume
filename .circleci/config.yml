@@ -9,6 +9,10 @@ executors:
 jobs:
   build:
     executor: docker-executor
+    docker:
+      - image: circleci/node:16   # Ganti dengan image yang sesuai dengan aplikasi kamu
+        environment:
+          DOCKER_TLS_CERTDIR: "/certs"   # Pengaturan untuk Docker-in-Docker
     steps:
       - checkout
       - run:
