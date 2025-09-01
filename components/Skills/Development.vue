@@ -11,8 +11,6 @@
         <span>JavaScript (ES6)</span>
         <span class="font-light text-[#93c5fd] font-inter">/</span>
         <span>TypeScript</span>
-        <span class="font-light text-[#93c5fd] font-inter">/</span>
-        <span>Golang</span>
       </li>
       <li class="space-x-2">
         <span>Vue (Nuxt)</span>
