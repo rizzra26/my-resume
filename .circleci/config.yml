@@ -4,6 +4,8 @@ executors:
   docker-executor:
     docker:
       - image: circleci/node:16  # Ganti dengan image yang sesuai, misalnya image Node.js
+        environment:
+          DOCKER_TLS_CERTDIR: "/certs"
     working_directory: ~/repo
 
 jobs:
@@ -18,7 +20,7 @@ jobs:
       - run:
           name: Check Docker Daemon
           command: |
-            ls -l /var/run/docker.sock
+            docker info
       - run:
           name: Build Nuxt.js
           command: |
