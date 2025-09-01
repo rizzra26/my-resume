@@ -3,17 +3,7 @@ version: 2.1
 executors:
   docker-executor:
     docker:
-<<<<<<< HEAD
       - image: circleci/node:16  # Ganti dengan image yang sesuai, misalnya image Node.js
-<<<<<<< HEAD
-        resource_class: rizzra26/vpsku
-=======
-        environment:
-          DOCKER_TLS_CERTDIR: "/certs"
-=======
-      - image: circleci/python:3.8  # Ganti dengan image yang sesuai, misalnya image Node.js
->>>>>>> parent of 9fee00e (Fix: change circleci image to node:16)
->>>>>>> parent of 65d1a66 (Fix: conflicts)
     working_directory: ~/repo
 
 jobs:
@@ -25,10 +15,6 @@ jobs:
           name: Install Dependencies
           command: |
             npm install
-      - run:
-          name: Check Docker Daemon
-          command: |
-            docker info
       - run:
           name: Build Nuxt.js
           command: |
@@ -45,7 +31,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/python:3.8  # Ganti dengan image yang sesuai
+      - image: circleci/node:16  # Ganti dengan image yang sesuai
     steps:
       - checkout
       - run:
