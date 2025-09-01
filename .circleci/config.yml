@@ -8,13 +8,11 @@ executors:
 
 jobs:
   build:
-    # executor: docker-executor
-    docker:
-      - image: circleci/node:16   # Ganti dengan image yang sesuai dengan aplikasi kamu
-        environment:
-          DOCKER_TLS_CERTDIR: "/certs"   # Pengaturan untuk Docker-in-Docker
+    executor: docker-executor
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Install Dependencies
           command: |
