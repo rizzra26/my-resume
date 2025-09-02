@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Build Nuxt.js
           command: |
-            npm run build
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; npm run build"
       - run:
           name: Build Docker Image
           command: |
