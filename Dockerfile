@@ -4,18 +4,12 @@
 
     COPY package.json yarn.lock ./
 
-    RUN yarn install
+    RUN npm install
 
     COPY . .
 
-    RUN yarn build
-
-    FROM node:lts-alpine AS production
-
-    WORKDIR /
-
-    COPY --from=build /.output /.output
-
-    EXPOSE 3000
+    RUN npm run build
 
     CMD ["node", ".output/server/index.mjs"]
+
+    EXPOSE 3000

@@ -14,11 +14,11 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; rm -rf .nuxt .output; npm install"
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; npm install"
       - run:
           name: Build Nuxt.js
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; npm run build"
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; rm -rf .nuxt .output; git pull; npm run build"
       - run:
           name: Build Docker Image
           command: |
