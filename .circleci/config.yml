@@ -10,7 +10,9 @@ jobs:
     executor: docker-executor
     steps:
       - checkout
-      - setup_remote_docker
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:bDd/t9/35EkLrMEID6yvQYuwJc+/NIkxPfm+rtxdihA"
       - run:
           name: Install Dependencies
           command: |
@@ -22,13 +24,11 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            which python3
-            docker build -t rizzra/my-resume .
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "docker build -t rizzra/my-resume ."
       - run:
           name: Push Docker Image to Docker Hub
           command: |
-            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-            docker push rizzra/my-resume
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin; docker push rizzra/my-resume"
 
   deploy:
     executor: docker-executor
