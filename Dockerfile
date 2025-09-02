@@ -12,7 +12,7 @@
 
     FROM node:lts-alpine AS production
 
-    WORKDIR /app
+    WORKDIR /
 
     COPY --from=build /.output /.output
 
