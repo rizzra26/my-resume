@@ -39,12 +39,11 @@ jobs:
       - run:
           name: Deploy to VPS using Portainer
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 << EOF
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225
             docker pull rizzra/my-resume  # Tarik Docker image yang telah dipush ke Docker Hub
             docker stop my-resume || true  # Stop container sebelumnya
             docker rm my-resume || true    # Hapus container sebelumnya
             docker run -d -p 80:3000 --name my-resume rizzra/my-resume  # Jalankan aplikasi Nuxt.js di VPS
-            EOF
 
 workflows:
   version: 2
