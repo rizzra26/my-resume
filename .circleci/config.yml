@@ -10,25 +10,24 @@ jobs:
     executor: docker-executor
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:bDd/t9/35EkLrMEID6yvQYuwJc+/NIkxPfm+rtxdihA"
+      - setup_remote_docker
       - run:
           name: Install Dependencies
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; npm install"
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; rm -rf .nuxt .output; npm install"
       - run:
           name: Build Nuxt.js
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; rm -rf .nuxt .output; git pull; npm run build"
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; npm run build"
       - run:
           name: Build Docker Image
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "cd ~/apps/my-resume; docker build -t rizzra/my-resume ."
+            docker build -t rizzra/my-resume .
       - run:
           name: Push Docker Image to Docker Hub
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin; docker push rizzra/my-resume"
+            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+            docker push rizzra/my-resume
 
   deploy:
     executor: docker-executor
