@@ -22,6 +22,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
+            which python3
             docker build -t rizzra/my-resume .
       - run:
           name: Push Docker Image to Docker Hub
