@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "docker build -t rizzra/my-resume ."
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "cd ~/apps/my-resume; docker build -t rizzra/my-resume ."
       - run:
           name: Push Docker Image to Docker Hub
           command: |
