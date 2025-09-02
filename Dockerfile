@@ -1,15 +1,21 @@
-FROM node:16-alpine
+    FROM node:lts-alpine AS build
 
-WORKDIR /app
+    WORKDIR /
 
-COPY package*.json ./
+    COPY package.json yarn.lock ./
 
-RUN npm install
+    RUN yarn install --frozen-lockfile
 
-COPY . .
+    COPY . .
 
-RUN npm run build
+    RUN yarn build
 
-CMD ["node", ".output/server/index.mjs"]
+    FROM node:lts-alpine AS production
 
-EXPOSE 3000
+    WORKDIR /app
+
+    COPY --from=build /app/.output /app/.output
+
+    EXPOSE 3000
+
+    CMD ["node", ".output/server/index.mjs"]
