@@ -14,7 +14,7 @@
 
     WORKDIR /app
 
-    COPY --from=build /app/.output /app/.output
+    COPY --from=build /.output /.output
 
     EXPOSE 3000
 
