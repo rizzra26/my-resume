@@ -3,14 +3,14 @@ version: 2.1
 executors:
   docker-executor:
     docker:
-      - image: cimg/base:current  # Ganti dengan image yang sesuai, misalnya image Node.js
-    resource_class: rizzra26/my-resume
+      - image: cimg/base:stable  # Ganti dengan image yang sesuai, misalnya image Node.js
 
 jobs:
   build:
     executor: docker-executor
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Install Dependencies
           command: |
@@ -33,13 +33,18 @@ jobs:
     executor: docker-executor
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:bDd/t9/35EkLrMEID6yvQYuwJc+/NIkxPfm+rtxdihA"
       - run:
           name: Deploy to VPS using Portainer
           command: |
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 << EOF
             docker pull rizzra/my-resume  # Tarik Docker image yang telah dipush ke Docker Hub
             docker stop my-resume || true  # Stop container sebelumnya
             docker rm my-resume || true    # Hapus container sebelumnya
             docker run -d -p 80:3000 --name my-resume rizzra/my-resume  # Jalankan aplikasi Nuxt.js di VPS
+            EOF
 
 workflows:
   version: 2
