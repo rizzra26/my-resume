@@ -8,17 +8,23 @@ jobs:
       - checkout
       - add_ssh_keys
       - run:
+          name: Install SSH and Dependencies
+          command: |
+            apt-get update
+            apt-get install -y openssh-client
+            mkdir -p ~/.ssh
+      - run:
           name: Install dependencies
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; echo ~/.bashrc"
+            ssh $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm install"
       - run:
           name: Build Nuxt app
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm run build"
+            ssh $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm run build"
       - run:
           name: Build Docker image
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker image rm $DOCKER_USERNAME/my-resume:latest; cd ~/apps/my-resume; docker build --no-cache -t my-resume ."
+            ssh $VPS_USER@$VPS_HOST "docker image rm $DOCKER_USERNAME/my-resume:latest; cd ~/apps/my-resume; docker build --no-cache -t my-resume ."
 
   deploy:
     docker:
@@ -29,15 +35,15 @@ jobs:
       - run:
           name: Login to Docker Hub
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+            ssh $VPS_USER@$VPS_HOST "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
       - run:
           name: Push Docker image to Docker Hub
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker tag my-resume $DOCKER_USERNAME/my-resume:latest; docker push $DOCKER_USERNAME/my-resume:latest"
+            ssh $VPS_USER@$VPS_HOST "docker tag my-resume $DOCKER_USERNAME/my-resume:latest; docker push $DOCKER_USERNAME/my-resume:latest"
       - run:
           name: Deploy to VPS
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker stop my-resume; docker rm -f my-resume; docker pull $DOCKER_USERNAME/my-resume:latest; docker run -d -p 3000:3000 --name my-resume $DOCKER_USERNAME/my-resume:latest"
+            ssh $VPS_USER@$VPS_HOST "docker stop my-resume; docker rm -f my-resume; docker pull $DOCKER_USERNAME/my-resume:latest; docker run -d -p 3000:3000 --name my-resume $DOCKER_USERNAME/my-resume:latest"
 
 workflows:
   version: 2
