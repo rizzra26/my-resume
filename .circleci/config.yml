@@ -10,6 +10,10 @@ jobs:
           fingerprints:
             - "SHA256:ZCa73J8HThC4q/aMZcdm81ElMDVCs+rR63xxOIQjODE"
       - run:
+          name: Add VPS to known hosts
+          command: |
+            ssh-keyscan -H $VPS_IP >> ~/.ssh/known_hosts
+      - run:
           name: Install dependencies
           command: |
             ssh $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm install"
@@ -41,7 +45,7 @@ jobs:
       - run:
           name: Deploy to VPS
           command: |
-            ssh $VPS_USER@$VPS_HOST "ssh-keyscan -H $VPS_IP >> ~/.ssh/known_hosts; docker stop my-resume; docker rm -f my-resume; docker pull $DOCKER_USERNAME/my-resume:latest; docker run -d -p 3000:3000 --name my-resume $DOCKER_USERNAME/my-resume:latest"
+            ssh $VPS_USER@$VPS_HOST "docker stop my-resume; docker rm -f my-resume; docker pull $DOCKER_USERNAME/my-resume:latest; docker run -d -p 3000:3000 --name my-resume $DOCKER_USERNAME/my-resume:latest"
 
 workflows:
   version: 2
