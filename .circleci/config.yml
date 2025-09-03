@@ -14,20 +14,20 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; rm -rf .nuxt .output; npm install"
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; npm install"
       - run:
           name: Build Nuxt.js
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; npm run build"
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; rm -rf .nuxt .output; git pull; npm run build"
       - run:
           name: Build Docker Image
           command: |
-            docker build -t rizzra/my-resume .
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "cd ~/apps/my-resume; docker build -t rizzra/my-resume:latest ."
+            
       - run:
           name: Push Docker Image to Docker Hub
           command: |
-            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-            docker push rizzra/my-resume
+            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "cd ~/apps/my-resume; echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin; docker push rizzra/my-resume"
 
   deploy:
     executor: docker-executor
