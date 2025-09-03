@@ -7,10 +7,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Add VPS to known hosts
-          command: |
-            ssh-keyscan -H $VPS_IP | tee -a ~/.ssh/known_hosts  
-      - run:
           name: Install dependencies
           command: |
             ssh $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm install"
