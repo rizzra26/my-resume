@@ -8,19 +8,19 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:bDd/t9/35EkLrMEID6yvQYuwJc+/NIkxPfm+rtxdihA"
+            - "SHA256:ZCa73J8HThC4q/aMZcdm81ElMDVCs+rR63xxOIQjODE"
       - run:
           name: Install dependencies
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm install"
+            ssh $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm install"
       - run:
           name: Build Nuxt app
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm run build"
+            ssh $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm run build"
       - run:
           name: Build Docker image
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker image rm $DOCKER_USERNAME/my-resume:latest; cd ~/apps/my-resume; docker build --no-cache -t my-resume ."
+            ssh $VPS_USER@$VPS_HOST "docker image rm $DOCKER_USERNAME/my-resume:latest; cd ~/apps/my-resume; docker build --no-cache -t my-resume ."
 
   deploy:
     docker:
@@ -29,19 +29,19 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:bDd/t9/35EkLrMEID6yvQYuwJc+/NIkxPfm+rtxdihA"
+            - "SHA256:ZCa73J8HThC4q/aMZcdm81ElMDVCs+rR63xxOIQjODE"
       - run:
           name: Login to Docker Hub
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+            ssh $VPS_USER@$VPS_HOST "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
       - run:
           name: Push Docker image to Docker Hub
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker tag my-resume $DOCKER_USERNAME/my-resume:latest; docker push $DOCKER_USERNAME/my-resume:latest"
+            ssh $VPS_USER@$VPS_HOST "docker tag my-resume $DOCKER_USERNAME/my-resume:latest; docker push $DOCKER_USERNAME/my-resume:latest"
       - run:
           name: Deploy to VPS
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker stop my-resume; docker rm -f my-resume; docker pull $DOCKER_USERNAME/my-resume:latest; docker run -d -p 3000:3000 --name my-resume $DOCKER_USERNAME/my-resume:latest"
+            ssh $VPS_USER@$VPS_HOST "ssh-keyscan -H $VPS_IP >> ~/.ssh/known_hosts; docker stop my-resume; docker rm -f my-resume; docker pull $DOCKER_USERNAME/my-resume:latest; docker run -d -p 3000:3000 --name my-resume $DOCKER_USERNAME/my-resume:latest"
 
 workflows:
   version: 2
