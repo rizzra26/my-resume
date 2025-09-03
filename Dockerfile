@@ -13,6 +13,6 @@ WORKDIR /my-resume
 
 COPY --from=build /my-resume /my-resume
 
-CMD ["node", ".output/server/index.mjs"]
+CMD ["node", "my-resume/.output/server/index.mjs"]
 
 EXPOSE 3000
