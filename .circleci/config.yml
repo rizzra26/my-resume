@@ -19,6 +19,8 @@ jobs:
       - run:
           name: Build Docker image
           command: |
+            docker stop my-resume
+            docker rm -f my-resume
             docker build --no-cache -t my-resume .
 
   deploy:
