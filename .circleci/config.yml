@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm install"
+            ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "node -v; cd ~/apps/my-resume; npm install"
       - run:
           name: Build Nuxt app
           command: |
