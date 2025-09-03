@@ -6,6 +6,7 @@ jobs:
       - image: cimg/node:16.10
     steps:
       - checkout
+      - add_ssh_keys
       - run:
           name: Install dependencies
           command: |
@@ -24,6 +25,7 @@ jobs:
       - image: cimg/node:16.10
     steps:
       - checkout
+      - add_ssh_keys
       - run:
           name: Login to Docker Hub
           command: |
