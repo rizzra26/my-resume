@@ -8,12 +8,6 @@ jobs:
       - checkout
       - add_ssh_keys
       - run:
-          name: Install SSH and Dependencies
-          command: |
-            apt-get update
-            apt-get install -y openssh-client
-            mkdir -p ~/.ssh
-      - run:
           name: Install dependencies
           command: |
             ssh $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm install"
