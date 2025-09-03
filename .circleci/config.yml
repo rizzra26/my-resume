@@ -10,15 +10,15 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "node -v; cd ~/apps/my-resume; npm install"
+            ssh -t -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "source ~/.bashrc; cd ~/apps/my-resume; npm install"
       - run:
           name: Build Nuxt app
           command: |
-            ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm run build"
+            ssh -t -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "source ~/.bashrc; cd ~/apps/my-resume; npm run build"
       - run:
           name: Build Docker image
           command: |
-            ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "docker image rm $DOCKER_USERNAME/my-resume:latest; cd ~/apps/my-resume; docker build --no-cache -t my-resume ."
+            ssh -t -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "source ~/.bashrc; docker image rm $DOCKER_USERNAME/my-resume:latest; cd ~/apps/my-resume; docker build --no-cache -t my-resume ."
 
   deploy:
     docker:
