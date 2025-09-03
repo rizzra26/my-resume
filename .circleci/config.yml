@@ -11,15 +11,15 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            npm install
+            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm install"
       - run:
           name: Build Nuxt app
           command: |
-            npm run build
+            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; npm run build"
       - run:
           name: Build Docker image
           command: |
-            docker build --no-cache -t my-resume .
+            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker image rm $DOCKER_USERNAME/my-resume:latest; cd ~/apps/my-resume; docker build --no-cache -t my-resume ."
 
   deploy:
     docker:
@@ -31,12 +31,11 @@ jobs:
       - run:
           name: Login to Docker Hub
           command: |
-            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
       - run:
           name: Push Docker image to Docker Hub
           command: |
-            docker tag my-resume $DOCKER_USERNAME/my-resume:latest
-            docker push $DOCKER_USERNAME/my-resume:latest
+            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker tag my-resume $DOCKER_USERNAME/my-resume:latest; docker push $DOCKER_USERNAME/my-resume:latest"
       - run:
           name: Deploy to VPS
           command: |
