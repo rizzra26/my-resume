@@ -15,4 +15,4 @@ COPY --from=build /my-resume /my-resume
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["node", ".output/server/index.mjs"]
