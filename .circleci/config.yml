@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; node --version"
+            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "cd ~/apps/my-resume; ls"
       - run:
           name: Build Nuxt app
           command: |
