@@ -19,8 +19,6 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker stop my-resume
-            docker rm -f my-resume
             docker build --no-cache -t my-resume .
 
   deploy:
@@ -42,7 +40,7 @@ jobs:
       - run:
           name: Deploy to VPS
           command: |
-            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker pull $DOCKER_USERNAME/my-resume:latest; docker run -d -p 3000:3000 --name my-resume $DOCKER_USERNAME/my-resume:latest"
+            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "docker stop my-resume; docker rm -f my-resume; docker pull $DOCKER_USERNAME/my-resume:latest; docker run -d -p 3000:3000 --name my-resume $DOCKER_USERNAME/my-resume:latest"
 
 workflows:
   version: 2
