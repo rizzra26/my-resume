@@ -1,15 +1,23 @@
-    FROM node:lts-alpine AS build
+# Menggunakan image Node.js sebagai base image
+FROM node:16-alpine
 
-    WORKDIR /
+# Set working directory
+WORKDIR /
 
-    COPY package.json yarn.lock ./
+# Copy package.json dan package-lock.json
+COPY package*.json ./
 
-    RUN npm install
+# Install dependencies
+RUN npm install
 
-    COPY . .
+# Copy semua file aplikasi ke dalam container
+COPY . .
 
-    RUN npm run build
+# Build aplikasi Nuxt.js
+RUN npm run build
 
-    CMD ["node", ".output/server/index.mjs"]
+# Menjalankan aplikasi di port 3000
+CMD ["node", ".output/server/index.mjs"]
 
-    EXPOSE 3000
+# Expose port 3000
+EXPOSE 3000
