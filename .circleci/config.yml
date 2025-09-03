@@ -1,45 +1,45 @@
 version: 2.1
 
-executors:
-  docker-executor:
-    docker:
-      - image: cimg/base:stable  # Ganti dengan image yang sesuai, misalnya image Node.js
-
 jobs:
   build:
-    executor: docker-executor
+    docker:
+      - image: cimg/node:16.10  # Docker image untuk Node.js
     steps:
-      - checkout
-      - setup_remote_docker
+      - checkout  # Menarik kode dari repositori
       - run:
-          name: Install Dependencies
+          name: Install dependencies
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; git pull; npm install"
+            npm install
       - run:
-          name: Build Nuxt.js
+          name: Build Nuxt app
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "source ~/.nvm/nvm.sh; cd ~/apps/my-resume; rm -rf .nuxt .output; git pull; npm run build"
+            npm run build
       - run:
-          name: Build Docker Image
+          name: Build Docker image
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "cd ~/apps/my-resume; docker build -t rizzra/my-resume:latest ."
-            
-      - run:
-          name: Push Docker Image to Docker Hub
-          command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "cd ~/apps/my-resume; echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin; docker push rizzra/my-resume"
+            docker build -t my-resume .
 
   deploy:
-    executor: docker-executor
+    docker:
+      - image: cimg/node:16.10
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:bDd/t9/35EkLrMEID6yvQYuwJc+/NIkxPfm+rtxdihA"
       - run:
-          name: Deploy to VPS using Portainer
+          name: Login to Docker Hub
           command: |
-            ssh -o StrictHostKeyChecking=no root@5.231.70.225 "docker pull rizzra/my-resume; docker stop my-resume || true; docker rm my-resume || true; docker run -d -p 3000:3000 --name my-resume rizzra/my-resume"  
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run:
+          name: Push Docker image to Docker Hub
+          command: |
+            docker tag my-resume $DOCKER_USERNAME/my-resume:latest
+            docker push $DOCKER_USERNAME/my-resume:latest
+      - run:
+          name: Deploy to VPS
+          command: |
+            ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
+              docker pull $DOCKER_USERNAME/my-resume:latest
+              docker-compose -f ~/apps/my-resume/docker-compose.yml up -d
+            EOF
 
 workflows:
   version: 2
@@ -49,4 +49,3 @@ workflows:
       - deploy:
           requires:
             - build
-

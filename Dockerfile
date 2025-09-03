@@ -1,23 +1,18 @@
-# Menggunakan image Node.js sebagai base image
-FROM node:16-alpine
+# Stage 1: Build the Nuxt app
+FROM node:16 AS build
 
-# Set working directory
-WORKDIR /
-
-# Copy package.json dan package-lock.json
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy semua file aplikasi ke dalam container
+WORKDIR /my-resume
 COPY . .
-
-# Build aplikasi Nuxt.js
+RUN npm install
 RUN npm run build
 
-# Menjalankan aplikasi di port 3000
-CMD ["node", ".output/server/index.mjs"]
+# Stage 2: Run Nuxt app
+FROM node:16
 
-# Expose port 3000
+WORKDIR /my-resume
+
+COPY --from=build /my-resume /my-resume
+
 EXPOSE 3000
+
+CMD ["npm", "run", "start"]
