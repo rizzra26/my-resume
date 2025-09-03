@@ -6,13 +6,10 @@ jobs:
       - image: cimg/node:16.10
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:ZCa73J8HThC4q/aMZcdm81ElMDVCs+rR63xxOIQjODE"
       - run:
           name: Add VPS to known hosts
           command: |
-            echo "$(ssh-keyscan -H $VPS_IP)" >> ~/.ssh/known_hosts  
+            ssh-keyscan -H $VPS_IP | tee -a ~/.ssh/known_hosts  
       - run:
           name: Install dependencies
           command: |
@@ -31,9 +28,6 @@ jobs:
       - image: cimg/node:16.10
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:ZCa73J8HThC4q/aMZcdm81ElMDVCs+rR63xxOIQjODE"
       - run:
           name: Login to Docker Hub
           command: |
