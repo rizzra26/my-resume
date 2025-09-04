@@ -20,14 +20,5 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'node-server'
   },
-  css: ["~/assets/css/fonts.css", "~/assets/css/global.css"],
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "~/assets/scss/_colors.scss" as *;'
-        }
-      }
-    }
-  }
+  css: ["~/assets/css/fonts.css", "~/assets/css/global.css"]
 });
