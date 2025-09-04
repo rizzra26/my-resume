@@ -1,27 +1,22 @@
-FROM node:18
+# Stage 1: Build the Nuxt app
+FROM node:16 AS build
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-COPY yarn.lock ./
-
-ENV NODE_ENV=production
-ENV NITRO_PRESET=node-server
-
-# Install dependencies
-RUN npm install
-# atau RUN yarn install
-
-# Copy source code
 COPY . .
 
-# Build aplikasi
+RUN npm install
+
 RUN npm run build
-# atau RUN yarn build
 
-# Expose port
+# Stage 2: Run Nuxt app
+FROM node:16
+
+WORKDIR /app
+
+COPY --from=build /app /app
+
+# CMD ["node", ".output/server/index.mjs"]
+CMD ["npx", "nuxi", "preview"]
+
 EXPOSE 3000
-
-# Start aplikasi
-CMD ["node", ".output/server/index.mjs"]
