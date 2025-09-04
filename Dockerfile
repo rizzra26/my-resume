@@ -24,5 +24,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Start aplikasi
-# CMD ["node", ".output/server/index.mjs"]
-CMD ["npx", "nuxi", "preview"]
+CMD ["node", ".output/server/index.mjs"]
