@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const paragraph = `Hi, my name is Rizki. I'm a Full-Stack Developer based in Bekasi, Indonesia.\n\nA reliable and passionate person for building innovative and intuitive web or mobile applications, I'm constantly striving to improve my skills and stay up-to-date with the latest technologies.\n\nI'm currently self taught learning Back-End skills with Go-lang and doing some indie project, I'm also looking for a job as a developer.`;
+const paragraph = `Hi, my name is Rizki. I'm a Full-Stack Developer based in Bekasi, Indonesia.\n\nA reliable and passionate person for building innovative and intuitive web or mobile applications, I'm constantly striving to improve my skills and stay up-to-date with the latest technologies.\n\nI'm currently self taught learning Back-End skills with Nest and doing some indie project, I'm also looking for a job as a developer.`;
 </script>
 
 <template>
