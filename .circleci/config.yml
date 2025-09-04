@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "export PATH=~/.nvm/versions/node/v22.19.0/bin:$PATH; cd ~/apps/my-resume; npm install"
+            ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "export PATH=~/.nvm/versions/node/v22.19.0/bin:$PATH; cd ~/apps/my-resume; git pull; npm install"
       - run:
           name: Build Nuxt app
           command: |
@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "docker stop my-resume; docker container prune -f; docker image prune -a -f; cd ~/apps/my-resume; cat Dockerfile"
+            ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $VPS_USER@$VPS_HOST "docker stop my-resume; docker container prune -f; docker image prune -a -f; cd ~/apps/my-resume; docker build --no-cache -t my-resume ."
 
   deploy:
     docker:
