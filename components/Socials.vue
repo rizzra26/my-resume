@@ -2,7 +2,6 @@
 export default {
   methods: {
     printPage() {
-      document.title = "CV_Rizky_Ramadhan.pdf"
       window.print();
     },
   },
