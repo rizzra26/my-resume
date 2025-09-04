@@ -1,18 +1,27 @@
-# Stage 1: Build the Nuxt app
-FROM node:16 AS build
+FROM node:18-alpine
 
-WORKDIR /my-resume
-COPY . .
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+COPY yarn.lock ./
+
+ENV NODE_ENV=production
+ENV NITRO_PRESET=node-server
+
+# Install dependencies
 RUN npm install
+# atau RUN yarn install
+
+# Copy source code
+COPY . .
+
+# Build aplikasi
 RUN npm run build
+# atau RUN yarn build
 
-# Stage 2: Run Nuxt app
-FROM node:16
-
-WORKDIR /my-resume
-
-COPY --from=build /my-resume /my-resume
-
-CMD ["node", "my-resume/.output/server/index.mjs"]
-
+# Expose port
 EXPOSE 3000
+
+# Start aplikasi
+CMD ["node", ".output/server/index.mjs"]

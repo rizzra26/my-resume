@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  ssr: true,
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -16,5 +17,17 @@ export default defineNuxtConfig({
     global: true,
     icons: ["mdi", "simple-icons"],
   },
+  nitro: {
+    preset: 'node-server'
+  },
   css: ["~/assets/css/fonts.css", "~/assets/css/global.css"],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/scss/_colors.scss" as *;'
+        }
+      }
+    }
+  }
 });
